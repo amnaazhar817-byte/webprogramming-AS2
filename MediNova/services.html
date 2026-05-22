@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services - MediNova Healthcare</title>
+
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    .page-banner {
+      background:
+      linear-gradient(rgba(3, 19, 10, 0.72), rgba(3, 19, 10, 0.78)),
+      url('./images/hero-hospital.jpg'); /* Added explicit relative dot-slash */
+      background-size: cover;
+      background-position: center;
+      padding: 120px 20px;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+    }
+    .page-banner h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+    .page-banner p {
+      font-size: 1.2rem;
+      color: #bce3bc;
+      font-weight: 400;
+    }
+
+    .page-banner::before {
+      content: '✚';
+      position: absolute;
+      top: 15%;
+      left: 8%;
+      font-size: 80px;
+      color: rgba(255, 255, 255, 0.05);
+    }
+    .page-banner::after {
+      content: '❋';
+      position: absolute;
+      bottom: 12%;
+      right: 10%;
+      font-size: 70px;
+      color: rgba(255, 255, 255, 0.05);
+    }
+
+    .services-intro {
+      padding: 80px 8% 40px 8%;
+      text-align: center;
+      background-color: #fcfdfc;
+    }
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: #0f2f1b;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .section-title p {
+      color: #4b6652;
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .services-section {
+      padding: 20px 8% 80px 8%;
+      background-color: #fcfdfc;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: #ffffff;
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s ease;
+      border: 2px solid #1a441a;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: #699868;
+      box-shadow: 0 15px 35px rgba(32, 71, 41, 0.08);
+    }
+    .service-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background-color: #e2ede2; /* Light background placeholder if image fails */
+    }
+    .service-content {
+      padding: 26px;
+      text-align: left;
+    }
+    .service-content i {
+      font-size: 32px;
+      color: #32613d;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+    .service-content h3 {
+      font-size: 1.4rem;
+      color: #0f2f1b;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .service-content p {
+      color: #4b6652;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .process {
+      padding: 90px 8%;
+      background-color: #ffffff;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 40px auto 0 auto;
+    }
+    .process-box {
+      background: #ffffff;
+      padding: 40px 30px;
+      text-align: center;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      border: 2px solid #cbe4c6;
+      transition: all 0.3s ease;
+    }
+    .process-box:hover {
+      transform: translateY(-6px);
+      border-color: #699868;
+    }
+    .process-box i {
+      font-size: 36px;
+      color: #32613d;
+      margin-bottom: 20px;
+    }
+    .process-box h3 {
+      font-size: 1.3rem;
+      color: #0f2f1b;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .process-box p {
+      color: #4b6652;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .appointment-banner {
+      padding: 60px 8%;
+      background-color: #fcfdfc;
+    }
+    .appointment-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 2px solid #cbe4c6;
+      border-radius: 25px;
+      padding: 35px 45px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+    .appointment-text-side {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: left;
+    }
+    .appointment-tag {
+      color: #204729;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .appointment-text-side p {
+      color: #0f2f1b;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    .btn-appointment {
+      display: inline-block;
+      background-color: #204729;
+      color: #ffffff;
+      padding: 16px 35px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 50px;
+      box-shadow: 0 8px 20px rgba(32, 71, 41, 0.15);
+      transition: all 0.3s ease;
+    }
+    .btn-appointment:hover {
+      background-color: #32613d;
+      transform: translateY(-2px);
+    }
+
+    .site-footer {
+      background-color: #03130a;
+      color: #ffffff;
+      padding: 60px 40px 30px 40px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-box h3 {
+      color: #bce3bc;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .footer-box p, .footer-box ul li {
+      color: #e2ede2;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .footer-box ul { list-style: none; padding: 0; margin: 0; }
+    .footer-box a {
+      color: #e2ede2;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-box a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+    .emergency-badge {
+      background-color: #d32f2f;
+      color: #ffffff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      display: inline-block;
+      font-weight: 700;
+      margin-top: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+    .hours-block { margin-top: 25px; }
+    .hours-block h4 { color: #bce3bc; font-size: 1rem; margin: 0 0 8px 0; font-weight: 600; }
+    .hours-block p { font-size: 0.88rem; color: #c8dec8; margin-bottom: 4px; }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 1200px;
+      margin: 40px auto 0 auto;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #a3cfa3;
+    }
+    .footer-legal-links a { color: #a3cfa3; text-decoration: none; margin-left: 15px; }
+    .footer-legal-links a:hover { color: #ffffff; }
+
+    @media (max-width: 992px) {
+      .services-grid, .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-content { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .appointment-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+        padding: 30px 20px;
+      }
+      .appointment-text-side { text-align: center; }
+      .section-title h2 { font-size: 2rem; }
+    }
+    @media (max-width: 600px) {
+      .services-grid, .process-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 576px) {
+      .footer-content { grid-template-columns: 1fr; gap: 30px; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
+      .footer-legal-links a { margin: 0 8px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar">
+    <div class="logo">MediNova</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="doctors.html">Doctors</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-banner">
+  <h1>Our Medical Services</h1>
+  <p>Advanced healthcare solutions designed for your wellbeing.</p>
+</section>
+
+<section class="services-intro">
+  <div class="section-title">
+    <h2>What We Offer</h2>
+    <p>
+      MediNova Healthcare provides advanced healthcare services with expert specialists, innovative medical technology, and compassionate patient-centered care.
+    </p>
+  </div>
+</section>
+
+<section class="services-section">
+  <div class="services-grid">
+
+    <div class="service-card">
+      <img src="./images/service-cardiology.jpg" alt="Cardiology Image Missing">
+      <div class="service-content">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <h3>Cardiology</h3>
+        <p>Advanced heart treatments, comprehensive cardiovascular diagnostics, and custom therapeutic cardiac solutions.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="./images/service-dental.jpg" alt="Dental Care Image Missing">
+      <div class="service-content">
+        <i class="fa-solid fa-tooth"></i>
+        <h3>Dental Care</h3>
+        <p>Professional cosmetic enhancements, root canals, and advanced restorative dental surgery treatments.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="./images/service-mental.jpg" alt="Mental Health Image Missing">
+      <div class="service-content">
+        <i class="fa-solid fa-brain"></i>
+        <h3>Mental Health</h3>
+        <p>Personalized psychological therapy, behavioral counseling, and complete emotional wellness support programs.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="./images/service-pediatrics.jpg" alt="Pediatrics Image Missing">
+      <div class="service-content">
+        <i class="fa-solid fa-baby"></i>
+        <h3>Pediatrics</h3>
+        <p>Specialized medical care, newborn screenings, developmental tracks, and vaccinations for infants and young children.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="./images/service-physiotherapy.jpg" alt="Physiotherapy Image Missing">
+      <div class="service-content">
+        <i class="fa-solid fa-user-doctor"></i>
+        <h3>Physiotherapy</h3>
+        <p>Custom physical rehabilitation plans, athletic therapy, and training routines focused on quick physical healing.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="./images/service-emergency.jpg" alt="Emergency Care Image Missing">
+      <div class="service-content">
+        <i class="fa-solid fa-truck-medical"></i>
+        <h3>Emergency Care</h3>
+        <p>Immediate 24/7 critical trauma care response, ambulance dispatch, and rapid emergency life-saving procedures.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="./images/service-dermatology.jpg" alt="Dermatology Image Missing">
+      <div class="service-content">
+        <i class="fa-solid fa-hand-holding-medical"></i>
+        <h3>Dermatology</h3>
+        <p>Comprehensive skin health screenings, cosmetic dermatology, allergy testing, and complex advanced skin therapies.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="./images/service-neurology.jpg" alt="Neurology Image Missing">
+      <div class="service-content">
+        <i class="fa-solid fa-stethoscope"></i>
+        <h3>Neurology</h3>
+        <p>Detailed neurological diagnostic evaluations, brain monitoring, and specialist treatment for complex nerve systems.</p>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <img src="./images/service-laboratory.jpg" alt="Laboratory Image Missing">
+      <div class="service-content">
+        <i class="fa-solid fa-kit-medical"></i>
+        <h3>Laboratory</h3>
+        <p>Modern diagnostic bloodwork analysis, pathology screening, and accurate computerized laboratory results tracking.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="process">
+  <div class="section-title">
+    <h2>How It Works</h2>
+    <p>Simple healthcare experience designed for patient comfort.</p>
+  </div>
+
+  <div class="process-grid">
+    <div class="process-box">
+      <i class="fa-solid fa-calendar-check"></i>
+      <h3>Book Appointment</h3>
+      <p>Select your preferred doctor and schedule online.</p>
+    </div>
+
+    <div class="process-box">
+      <i class="fa-solid fa-user-doctor"></i>
+      <h3>Doctor Consultation</h3>
+      <p>Receive professional diagnosis and expert guidance.</p>
+    </div>
+
+    <div class="process-box">
+      <i class="fa-solid fa-syringe"></i>
+      <h3>Treatment & Recovery</h3>
+      <p>Advanced treatment plans focused on complete recovery.</p>
+    </div>
+  </div>
+</section>
+
+<section class="appointment-banner">
+  <div class="appointment-container">
+    <div class="appointment-text-side">
+      <span class="appointment-tag">✚ Quick Access</span>
+      <p>Book your appointment with our expert medical specialists today.</p>
+    </div>
+    <div class="appointment-btn-side">
+      <a href="contact.html" class="btn-appointment">Schedule Appointment</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    
+    <div class="footer-box">
+      <h3>✚ MediNova Healthcare</h3>
+      <p>
+        Premium healthcare services designed with compassion, innovation, comfort, and trusted medical excellence.
+      </p>
+      <div class="emergency-badge">🚑 Emergency: 998</div>
+    </div>
+
+    <div class="footer-box">
+      <h3>Our Services</h3>
+      <ul>
+        <li><a href="services.html">Surgical Facilities</a></li>
+        <li><a href="services.html">Pharmacy Support</a></li>
+        <li><a href="services.html">Medical Diagnostics</a></li>
+        <li><a href="services.html">Clinical Care</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p><span class="icon">📍</span> Sharjah Healthcare City, UAE</p>
+      <p><span class="icon">📞</span> <a href="tel:+971555222111">+971 555 222 111</a></p>
+      <p><span class="icon">✉</span> <a href="mailto:info@medinova.com">info@medinova.com</a></p>
+    </div>
+
+    <div class="footer-box">
+      <h3>Connect With Us</h3>
+      <ul>
+        <li><a href="#" onclick="alert('Our Instagram channel is launching soon! Stay tuned.'); return false;">Instagram</a></li>
+        <li><a href="#" onclick="alert('Our Snapchat channel is launching soon! Stay tuned.'); return false;">Snapchat</a></li>
+        <li><a href="#" target="_blank">LinkedIn</a></li>
+      </ul>
+      <div class="hours-block">
+        <h4>Hours</h4>
+        <p>24/7 Emergency Care</p>
+        <p>OPD: 8:00 AM - 9:00 PM</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 MediNova Healthcare. All Rights Reserved.</p>
+    <div class="footer-legal-links">
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doctors - MediNova Healthcare</title>
+
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    .page-banner {
+      background: linear-gradient(rgba(3, 19, 10, 0.72), rgba(3, 19, 10, 0.78)), 
+                  url('images/hero-hospital.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 20px;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+    }
+    .page-banner h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+    .page-banner p {
+      font-size: 1.2rem;
+      color: #bce3bc;
+      font-weight: 400;
+    }
+    .doctors-intro {
+      padding: 80px 8% 40px 8%;
+      text-align: center;
+      background-color: #fcfdfc;
+    }
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: #0f2f1b;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .section-title p {
+      color: #4b6652;
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .doctors-section {
+      padding: 20px 8% 80px 8%;
+      background-color: #fcfdfc;
+    }
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .doctor-card {
+      background: #1a441a; 
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(15, 47, 27, 0.12);
+      transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+      border: 2px solid #102d10;
+      position: relative;
+    }
+    
+    .doctor-card:hover {
+      transform: translateY(-8px);
+      border-color: #558d5f;
+      box-shadow: 0 15px 35px rgba(26, 68, 26, 0.22);
+    }
+    .doctor-img {
+      width: 100%;
+      height: 230px; 
+      overflow: hidden;
+      border-bottom: 3px solid #102d10;
+      background-color: #113011;
+    }
+    .doctor-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .doctor-card:hover .doctor-img img {
+      transform: scale(1.05);
+    }
+    .doctor-info {
+      padding: 20px 18px;
+      text-align: center;
+    }
+    .doctor-info h3 {
+      font-size: 1.2rem;
+      color: #ffffff; 
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .doctor-info p {
+      color: #bce3bc; 
+      font-weight: 600;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .stars {
+      margin-bottom: 12px;
+    }
+    .stars i {
+      color: #ffb300; 
+      font-size: 0.8rem;
+      margin: 0 1px;
+    }
+    .experience-tag {
+      display: inline-block;
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.08); 
+      padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .btn-schedule {
+      display: block;
+      width: 100%;
+      background: transparent;
+      border: 2px solid #bce3bc;
+      color: #bce3bc;
+      padding: 8px 0;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .btn-schedule:hover {
+      background: #ffffff;
+      color: #1a441a;
+      border-color: #ffffff;
+    }
+
+    .appointment-banner {
+      padding: 60px 8%;
+      background-color: #fcfdfc;
+    }
+    .appointment-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 2px solid #cbe4c6;
+      border-radius: 25px;
+      padding: 35px 45px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+    .appointment-text-side {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: left;
+    }
+    .appointment-tag {
+      color: #204729;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .appointment-text-side p {
+      color: #0f2f1b;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    .btn-appointment {
+      display: inline-block;
+      background-color: #204729;
+      color: #ffffff;
+      padding: 16px 35px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 50px;
+      box-shadow: 0 8px 20px rgba(32, 71, 41, 0.15);
+      transition: all 0.3s ease;
+    }
+    .btn-appointment:hover {
+      background-color: #32613d;
+      transform: translateY(-2px);
+    }
+    .site-footer {
+      background-color: #03130a; 
+      color: #ffffff;
+      padding: 60px 40px 30px 40px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-box h3 {
+      color: #bce3bc;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .footer-box p, .footer-box ul li {
+      color: #e2ede2;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .footer-box ul { list-style: none; padding: 0; margin: 0; }
+    .footer-box a {
+      color: #e2ede2;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-box a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+    .emergency-badge {
+      background-color: #d32f2f;
+      color: #ffffff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      display: inline-block;
+      font-weight: 700;
+      margin-top: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+    .hours-block { margin-top: 25px; }
+    .hours-block h4 { color: #bce3bc; font-size: 1rem; margin: 0 0 8px 0; font-weight: 600; }
+    .hours-block p { font-size: 0.88rem; color: #c8dec8; margin-bottom: 4px; }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 1200px;
+      margin: 40px auto 0 auto;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #a3cfa3;
+    }
+    .footer-legal-links a { color: #a3cfa3; text-decoration: none; margin-left: 15px; }
+    .footer-legal-links a:hover { color: #ffffff; }
+
+    @media (max-width: 1200px) {
+      .doctors-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 992px) {
+      .doctors-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-content { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .appointment-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+        padding: 30px 20px;
+      }
+      .appointment-text-side { text-align: center; }
+      .section-title h2 { font-size: 2rem; }
+    }
+    @media (max-width: 576px) {
+      .doctors-grid { grid-template-columns: 1fr; }
+      .footer-content { grid-template-columns: 1fr; gap: 30px; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
+      .footer-legal-links a { margin: 0 8px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar">
+    <div class="logo">MediNova</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="doctors.html">Doctors</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-banner">
+  <h1>Our Expert Doctors</h1>
+  <p>Trusted medical professionals dedicated to exceptional patient care.</p>
+</section>
+
+<section class="doctors-intro">
+  <div class="section-title">
+    <h2>Trusted Medical Experts</h2>
+    <p>
+      Our team of highly experienced doctors is dedicated to providing compassionate, advanced, and personalized healthcare services focused on patient comfort, recovery, and wellbeing.
+    </p>
+  </div>
+</section>
+
+<section class="doctors-section">
+  <div class="doctors-grid">
+
+    <div class="doctor-card">
+      <div class="doctor-img">
+        <img src="./images/doctor1.jpg" alt="Dr. Emma Wilson">
+      </div>
+      <div class="doctor-info">
+        <h3>Dr. Emma Wilson</h3>
+        <p>Cardiologist</p>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <span class="experience-tag">10+ Years Experience</span>
+        <button class="btn-schedule" data-doctor="Dr. Emma Wilson" data-days="Sunday through Thursday">View Schedule</button>
+      </div>
+    </div>
+
+    <div class="doctor-card">
+      <div class="doctor-img">
+        <img src="./images/doctor2.jpg" alt="Dr. Ayesha Khan">
+      </div>
+      <div class="doctor-info">
+        <h3>Dr. Ayesha Khan</h3>
+        <p>Pediatrician</p>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <span class="experience-tag">8+ Years Experience</span>
+        <button class="btn-schedule" data-doctor="Dr. Ayesha Khan" data-days="Monday through Friday">View Schedule</button>
+      </div>
+    </div>
+
+    <div class="doctor-card">
+      <div class="doctor-img">
+        <img src="./images/doctor3.jpg" alt="Dr. Olivia James">
+      </div>
+      <div class="doctor-info">
+        <h3>Dr. Olivia James</h3>
+        <p>Neurologist</p>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+        </div>
+        <span class="experience-tag">12+ Years Experience</span>
+        <button class="btn-schedule" data-doctor="Dr. Olivia James" data-days="Monday through Wednesday">View Schedule</button>
+      </div>
+    </div>
+
+    <div class="doctor-card">
+      <div class="doctor-img">
+        <img src="./images/doctor4.jpg" alt="Dr. Lina George">
+      </div>
+      <div class="doctor-info">
+        <h3>Dr. Lina George</h3>
+        <p>Dental Surgeon</p>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <span class="experience-tag">9+ Years Experience</span>
+        <button class="btn-schedule" data-doctor="Dr. Lina George" data-days="Monday through Thursday">View Schedule</button>
+      </div>
+    </div>
+
+    <div class="doctor-card">
+      <div class="doctor-img">
+        <img src="./images/doctor5.jpg" alt="Dr. Michael Brown">
+      </div>
+      <div class="doctor-info">
+        <h3>Dr. Michael Brown</h3>
+        <p>Physiotherapist</p>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+          <i class="fa-regular fa-star"></i>
+        </div>
+        <span class="experience-tag">7+ Years Experience</span>
+        <button class="btn-schedule" data-doctor="Dr. Michael Brown" data-days="Sunday through Wednesday">View Schedule</button>
+      </div>
+    </div>
+
+    <div class="doctor-card">
+      <div class="doctor-img">
+        <img src="./images/doctor6.jpg" alt="Dr. Daniel Smith">
+      </div>
+      <div class="doctor-info">
+        <h3>Dr. Daniel Smith</h3>
+        <p>General Physician</p>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <span class="experience-tag">11+ Years Experience</span>
+        <button class="btn-schedule" data-doctor="Dr. Daniel Smith" data-days="full-time, 6 days a week (Sunday to Friday)">View Schedule</button>
+      </div>
+    </div>
+
+    <div class="doctor-card">
+      <div class="doctor-img">
+        <img src="./images/doctor7.jpg" alt="Dr. Sophia Ali">
+      </div>
+      <div class="doctor-info">
+        <h3>Dr. Sophia Ali</h3>
+        <p>Dermatologist</p>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <span class="experience-tag">9+ Years Experience</span>
+        <button class="btn-schedule" data-doctor="Dr. Sophia Ali" data-days="Tuesday, Wednesday, and Saturday">View Schedule</button>
+      </div>
+    </div>
+
+    <div class="doctor-card">
+      <div class="doctor-img">
+        <img src="./images/doctor8.jpg" alt="Dr. Adam Lee">
+      </div>
+      <div class="doctor-info">
+        <h3>Dr. Adam Lee</h3>
+        <p>Orthopedic Specialist</p>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <span class="experience-tag">13+ Years Experience</span>
+        <button class="btn-schedule" data-doctor="Dr. Adam Lee" data-days="Sunday through Thursday">View Schedule</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="appointment-banner">
+  <div class="appointment-container">
+    <div class="appointment-text-side">
+      <span class="appointment-tag">✚ Quick Access</span>
+      <p>Book your appointment with our expert medical specialists today.</p>
+    </div>
+    <div class="appointment-btn-side">
+      <a href="contact.html" class="btn-appointment">Schedule Appointment</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    
+    <div class="footer-box">
+      <h3>✚ MediNova Healthcare</h3>
+      <p>
+        Premium healthcare services designed with compassion, innovation, comfort, and trusted medical excellence.
+      </p>
+      <div class="emergency-badge">🚑 Emergency: 998</div>
+    </div>
+
+    <div class="footer-box">
+      <h3>Our Services</h3>
+      <ul>
+        <li><a href="services.html">Surgical Facilities</a></li>
+        <li><a href="services.html">Pharmacy Support</a></li>
+        <li><a href="services.html">Medical Diagnostics</a></li>
+        <li><a href="services.html">Clinical Care</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p><span class="icon">📍</span> Sharjah Healthcare City, UAE</p>
+      <p><span class="icon">📞</span> <a href="tel:+971555222111">+971 555 222 111</a></p>
+      <p><span class="icon">✉</span> <a href="mailto:info@medinova.com">info@medinova.com</a></p>
+    </div>
+
+    <div class="footer-box">
+      <h3>Connect With Us</h3>
+      <ul>
+        <li><a href="#" onclick="alert('Our Instagram channel is launching soon! Stay tuned.'); return false;">Instagram</a></li>
+        <li><a href="#" onclick="alert('Our Snapchat channel is launching soon! Stay tuned.'); return false;">Snapchat</a></li>
+        <li><a href="#" target="_blank">LinkedIn</a></li>
+      </ul>
+      <div class="hours-block">
+        <h4>Hours</h4>
+        <p>24/7 Emergency Care</p>
+        <p>OPD: 8:00 AM - 9:00 PM</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 MediNova Healthcare. All Rights Reserved.</p>
+    <div class="footer-legal-links">
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
